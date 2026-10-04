@@ -5,17 +5,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/cis_interface/cis_interface-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/source/c/cis_interface/cis_interface-{{ version }}.tar.gz
   sha256: 4ee72fa2418f9d040085225193a4adfa4de84b03776b6d28768bbcd31698fdbe
   
 build:
-  number: 1004
+  number: 1005
   skip: true  # [win and vc<14]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - python
